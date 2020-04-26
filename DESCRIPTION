@@ -1,0 +1,17 @@
+Package: AutoSULT
+Version: 1.0-0
+Date: 2020-04-01
+Title: Automatic Mortality Table Problem Generation
+Authors@R: person("Chris", "Groendyke", email = "groendyke@rmu.edu", role = c("aut", "cre"))
+Maintainer: Chris Groendyke <groendyke@rmu.edu>
+Description: Code to automatically generate selected types of problems and solutions from Chapters 3, 4, and 5 of Actuarial Mathematics for Life Contingent Risks, 2nd edition, by Dickson, Hardy, and Waters.  The problems generated make use of the Standard Ultimate Mortality Model (SUMM) a.k.a. Standard Ultimate Life Table (SULT), a mortality table based on Makeham's law and defined on pg. 65 of AMLCR2e.  Problems and solutions are typeset in LaTeX and rendered to PDF files.
+Depends: 
+    R (>= 3.6)
+Imports:
+    kableExtra (>= 1.1),
+    knitr (>= 1.2),
+    rmarkdown (>= 1.16),
+    magrittr
+LazyData: true
+LazyLoad: yes
+License: GPL-2

@@ -1,0 +1,8 @@
+export(Ch3QA)
+export(Ch4QA)
+export(Ch5QA)
+importFrom("stats", "runif")
+importFrom("kableExtra", "kable_styling", "row_spec")
+importFrom("knitr", "kable")
+importFrom("rmarkdown", "render", "pdf_document")
+importFrom("magrittr", "%>%")

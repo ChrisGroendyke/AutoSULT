@@ -1,0 +1,18 @@
+bibentry(bibtype = "Article",
+  title        = "xxx",
+  author       = c(person(given = "Chris",
+                          family = "Groendyke",
+                          email = "groendyke@rmu.edu"),
+                   person(given = "xxx",
+                          family = "xxx",
+                          email = "xxx")),
+  journal      = "Journal of xxx",
+  year         = "20xx",
+  volume       = "xx",
+  number       = "xx",
+  pages        = "x--xx",
+  doi          = "xxx",
+
+  header       = "To cite AutoSULT in publications use:"
+)
+
