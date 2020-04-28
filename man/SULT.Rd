@@ -5,7 +5,7 @@
 \alias{SULT}
 \title{Standard Ultimate Life Table.}
 
-\description{This is the single life Standard Ultimate Life Table (SULT) a.k.a. Standard Ultimate Mortality Model (SUMM) as defined on pg. 65 of Dickson et al.  It is based on the Makeham mortality model.
+\description{This is the single life Standard Ultimate Life Table (SULT) a.k.a. Standard Ultimate Survival Model (SUSM) as defined on pg. 65 of Dickson et al.  It is based on the Makeham mortality model.
     }
 
 \usage{SULT}

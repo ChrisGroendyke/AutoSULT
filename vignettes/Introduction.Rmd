@@ -1,0 +1,143 @@
+---
+title: "AutoSULT: Background and Usage"
+output: pdf_document
+header-includes:
+   - \usepackage{actuarialsymbol}
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(AutoSULT)
+library(magrittr)
+library(kableExtra)
+```
+
+# Introduction
+
+In teaching life contingencies courses, I've often noticed that some students struggle to execute basic calculations from a standard life table.  These might include survival probability calculations (possibly including fractional age assumptions), and EPVs of various types of insurance and annuity coverages.
+
+A couple of observations regarding these problems:
+
+  * For the most part, these problems are not conceptually complex, and can be solved in a very formulaic manner.
+  
+  * These problems (and especially corresponding solutions), like much material involving life contingencies, involves actuarial notation that can be rather tedious to typeset.
+
+I believe that many students could benefit from a large bank of basic problems (with included solutions) of various types.  These considerations led me to write a software package that would automatically generate these types of problems, including step-by-step solutions, typeset in an organized, nicely formatted manner.  Here, the end user is able to choose how many of which types of problem to generate, and the corresponding solutions would be generated concurrently.
+
+The target audience for this software would be students relatively early in the process of learning life contingencies and/or instructors of university courses covering life contingencies concepts.  Instructors could generate (perhaps individualized) homework assignments, quizzes, or problem sets for use in a recitation or tutorial session.  The software is also intended to be simple enough to be used directly by a student with no knowledge of \LaTeX.  It is not intended to be a tool for exam preparation for the SOA Exam LTAM (or other actuarial exams); rather, the goal is to generate problems and solutions covering basic, rudimentary types of actuarial life table calculations.
+
+# The Standard Ultimate Life Table
+
+The mortality table (life table) used in this software is the the \textbf{Standard Ultimate Survival Model (SUSM)} used by the Actuarial Mathematics for Life Contingent Risks textbook, $3^{rd}$ edition, textbook, by Dickson, Hardy, and Waters (AMLCR3e hereafter).  This mortality table, and its underlying survival model are used in many of the examples and exercises in this textbook.  The same life table (referred to there as the \textbf{Standard Ultimate Life Table (SULT)}) is also currently (as of Spring 2020) used as one of the standard tables in the Society of Actuaries (SOA) Long Term Actuarial Mathematics (LTAM) exam.  The single life table spans ages 20 to 100.
+
+The survival model underlying the mortality table is based on Makeham's law, so that the force of mortality at attained age $x$, which is often denoted by $\mu_x$, is given by the formula \[ \mu_x = A + Bc^x, \] with the SUSM using the parameter values $A = 0.000222, B = 2.7 \times 10^{-6}, \text{ and } c = 1.124.$  Where an interest rate is needed, the default is an annual effective interest rate of $i = 5\%$.  This interest rate is used for all of the insurance and annuity expected present values (EPVs) pre-calculated in the table.  An excerpt of the (single life portion of the) SULT is given in Table 1 below; a PDF file containing the SULT can be found at the Society of Actuaries website.\footnote{\url{https://www.soa.org/globalassets/assets/Files/Edu/2018/ltam-standard-ultimate-life-table.pdf}}
+
+```{r SULTexcerpt, echo=FALSE, results='asis'}
+# SULT Excerpt
+options(scipen=999) 
+#SULTexcerpt <- rbind(SULT[20:31,], rep("$\\vdots$", times = 14))
+SULTexcerpt <- SULT[20:30,]
+rownames(SULTexcerpt) <- NULL
+colnames(SULTexcerpt) <- c("$x$", "$l_x$", "$q_x$", "$\\ddot{a}_x$", "$A_x$", "$^2A_x$", "$\\ax**{x:\\angl{10}}$", "$\\Ax{x:\\angl{10}}$", "$\\ax**{x:\\angl{20}}$", "$\\Ax{x:\\angl{20}}$", "${_5E_x}$", "${_{10}E_x}$", "${_{20}E_x}$")
+printobj <- knitr::kable(SULTexcerpt, digits=c(0, 1, 6, 4, 5, 5, 4, 5, 4, 5, 5, 5, 5), format = "latex", align = "c", booktabs = TRUE, linesep = c('', '', '', '', '', '\\addlinespace', '', '', '', '', '\\addlinespace'), escape = FALSE, caption = "Excerpt from Standard Ultimate Life Table") %>%
+  kableExtra::kable_styling(font_size = 6) %>%
+  kableExtra::row_spec(0,font_size=9) %>%
+    kableExtra::row_spec(11,extra_latex_after = '\\addlinespace')
+
+print(printobj)
+```
+
+# Problem Types
+
+The problems implemented include 6 types of problems from Ch. 3 of AMLCR3e, 16 types of problems from Ch. 4 of AMLCR3e, and 13 types of problems from Ch. 5 of AMLCR3e. Each problem consists of the calculation of one specific probability or EPV, using entries in the life table.  The ages and (if applicable) product term lengths and deferral periods are randomly generated and are different for each problem, so that a very large number of distinct problems can be created.  The specific types of problems for these chapters are given in the tables below, where UDD and CF refer to the Uniform Distribution of Deaths and Constant Force of Mortality fractional age assumptions (see pages xx and xx of AMLCR3e, respectively, for definitions), and W2 refers to the 2-term Woolhouse formula (see page xx of AMLCR3e).
+
+```{r probtypesch3, echo=FALSE, results='asis'}
+# Chapter 3 table
+typecount <- 6
+probdescs <- c("${_tp_x}$", "${_tq_x}$", "${_k|_tq_x}$", "${_{t+s}p_{x+r}}$ under UDD or CF", "${_{t+s}q_{x+r}}$ under UDD or CF", "${_{k+s}|_{t+w}q_{x+r}}$ under UDD or CF")
+probdat <- array(c(1:typecount, probdescs), dim = c(typecount, 2))
+colnames(probdat) <- c("Problem Type", "Problem Description")
+
+print(knitr::kable(probdat, format = "pandoc", align = "cc", booktabs = FALSE, linesep = "", escape = FALSE, caption = "Chapter 3 Problem Types"))
+```
+
+```{r probtypesch4, echo=FALSE, results='asis'}
+# Chapter 4 table
+typecount <- 16
+probdescs <- c("$\\Ex[n]{x}$", "$\\Ax{\\termxn}$", "$\\Ax*{\\termxn}$", "$\\Ax{\\termxn}[\\hspace{0.05in}(m)]$", "$\\Ax{\\itop{x}:\\angl{2}}$ or $\\Ax{\\itop{x}:\\angl{3}}$ for $i \\neq 5\\%$", "$\\Ax*{\\itop{x}:\\angl{2}}$ or $\\Ax*{\\itop{x}:\\angl{3}}$ for $i \\neq 5\\%$", "$\\Ax{\\itop{x}:\\angl{2}}[\\hspace{0.05in}(m)]$ or $\\Ax{\\itop{x}:\\angl{3}}[\\hspace{0.05in}(m)]$ for $i \\neq 5\\%$", "$\\Ax{\\endowxn}$", "$\\Ax*{\\endowxn}$", "$\\Ax{\\endowxn}[(m)]$", "$\\Ax[u|]{x}$", "$\\Ax*[u|]{x}$", "$\\Ax[u|]{x}[(m)]$", "$\\Ax[u|]{\\termxn}$", "$\\Ax*[u|]{\\termxn}$", "$\\Ax[u|]{\\termxn}[\\hspace{0.05in}(m)]$")
+probdat <- array(c(1:typecount, probdescs), dim = c(typecount, 2))
+colnames(probdat) <- c("Problem Type", "Problem Description")
+
+print(knitr::kable(probdat, format = "pandoc", align = "cc", booktabs = FALSE, linesep = "", escape = FALSE, caption = "Chapter 4 Problem Types"))
+```
+
+\newpage
+
+```{r probtypesch5, echo=FALSE, results='asis'}
+# Chapter 5 table
+typecount <- 13
+probdescs <- c("$\\ax**{\\endowxn}$", "$\\ax**{\\joint\\endowxn}$", "$\\ax*{x}$ under UDD or W2", "$\\ax**{x}[(m)]$ under UDD or W2", "$\\ax*{\\endowxn}$ under UDD or W2", "$\\ax**{\\endowxn}[(m)]$ under UDD or W2", "$\\ax**[u|]{x}$", "$\\ax**[u|]{\\endowxn}$", "$\\ax**[u|]{\\joint\\endowxn}$", "$\\ax*[u|]{x}$ under UDD or W2", "$\\ax**[u|]{x}[(m)]$ under UDD or W2", "$\\ax*[u|]{\\endowxn}$ under UDD or W2", "$\\ax**[u|]{\\endowxn}[(m)]$ under UDD or W2")
+probdat <- array(c(1:typecount, probdescs), dim = c(typecount, 2))
+colnames(probdat) <- c("Problem Type", "Problem Description")
+
+print(knitr::kable(probdat, format = "pandoc", align = "cc", booktabs = FALSE, linesep = "", escape = FALSE, caption = "Chapter 5 Problem Types"))
+
+```
+
+# Usage
+
+There are three main user-level functions in the package, corresponding to the three chapters in AMLCR3e that the problems are associated with.  These functions are named $\tt{ChXQA()}$, where $\tt{X}$ is 3, 4, or 5, and all have identical parameters and default values (with the exception of the default names of the problem and solution files):
+
+```{r funcdef, eval=FALSE}
+ChXQA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
+  qfile = "qfilechX", afile = "afilechX", keeprmd = FALSE)
+```
+
+Each of these functions produces two PDFs, one containing the problems generated, and one containing the solutions to these problems.  These functions don't return any values, and are solely used for the side effect of generating these two PDFs.
+
+The types of problems to be generated can be specified in two different ways.  The first is by using the scalar argument $\tt{probspertype}$.  This will simply generate a fixed, specified number of problems for each of the problem types in the table above corresponding to the chapter in question.  The default value of this parameter is 5.  Thus, for example, to generate 2 problems (and associated solutions) for each of the 16 types of Chapter 4 problems shown above, we could use:
+
+```{r usage1, eval=FALSE}
+Ch4QA(probspertype = 2)
+```
+
+The other method of specifying the problem types is to use the vector argument $\tt{probspec}$, which enables for more fine-tuning by allowing the specification of how many problems of each type are to be generated.  For example, to generate 15 Chapter 3 problems total, consisting of 1 problem of type 1 (see Table 2 above), 4 problems of type 2, 2 problems of type 3, 3 problems of type 5, and 5 problems of type 6, we could use:
+
+```{r usage2, eval=FALSE}
+Ch3QA(probspec = c(1, 4, 2, 0, 3, 5))
+```
+
+If both $\tt{probspertype}$ and $\tt{probspec}$ are specified, the $\tt{probspec}$ vector will override.  It is also possible to generate fixed number of problems, randomly spread among the various problem types.  For example, to generate 10 Chapter 5 problems chosen randomly across the 13 problem types from that chapter, we could use:
+
+```{r usage3, eval=FALSE}
+probvec <- sample(1:13, size = 10, replace = TRUE)
+for (i in 1:13) probvec[i] <- sum(probvec == i)
+Ch5QA(probspec = probvec)
+```
+
+Several other parameters to these functions are available to help customize the resulting problem solution files.
+
+| Parameter | Description |
+|:----------|:------------|
+| $\tt{randomize}$ | Boolean variable controlling whether the problems will be randomized ($\tt{TRUE}$), or appear in problem type order ($\tt{FALSE}$) |
+| $\tt{probsummary}$ | Boolean variable controlling whether a summary of the problem types generated will be placed at the end of the question file |
+| $\tt{qfile}$ | Name (and path) to write question PDF file |
+| $\tt{afile}$ | Name (and path) to write solution PDF file |
+| $\tt{keeprmd}$ | Boolean variable controlling whether the Rmd files compiled to produce the PDFs are kept ($\tt{TRUE}$) or deleted ($\tt{FALSE}$) after the PDF is rendered |
+
+# Acknowledgements
+
+Many thanks to the following people, who have helped with the implementation and testing of this package: Adam Combs, Brian Hartman, Diana Skrzydlo, and the students in my ASCI 4100 courses at Robert Morris University.
+
+# Reference
+
+Dickson, David C.M., Mary R. Hardy, Howard R. Waters, \textit{Actuarial Mathematics for Life Contingent Risks}, Third Edition, Cambridge, UK: Cambridge University Press, 2020.
+
+

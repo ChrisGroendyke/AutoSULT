@@ -3,7 +3,7 @@
 \title{Chapter 4 Problem and Solution Generation
 }
 \description{
-Randomly generates and typesets problems of 16 specified types from Chapter 4 of ALMCR2e.  All problems use the Standard Ultimate Life Table (SULT) a.k.a. Standard Ultimate Mortality Model (SUMM).  This function generates two PDF files, one listing the problems, and another with the step-by-step solutions. 
+Randomly generates and typesets problems of 16 specified types from Chapter 4 of ALMCR2e.  All problems use the Standard Ultimate Life Table (SULT) a.k.a. Standard Ultimate Survival Model (SUSM).  This function generates two PDF files, one listing the problems, and another with the step-by-step solutions. 
 }
 \usage{
 Ch4QA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,

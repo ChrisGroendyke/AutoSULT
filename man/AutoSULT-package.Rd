@@ -25,7 +25,7 @@ Dickson, D.C.M., Hardy, M.R., Waters, H.R., 2013 \emph{Actuarial Mathematics for
 \keyword{package}
 \examples{
 # Generate 15 problems total from Ch.3 (1 of type 1, 4 of type 2, etc.)
-Ch3QA(probspec = c(1, 0, 0, 0, 0, 0))
+Ch3QA(probspec = c(1, 4, 2, 0, 3, 5))
 
 # Generate 2 problems of each type from Ch.4.
 Ch4QA(probspertype = 2)

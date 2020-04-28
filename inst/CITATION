@@ -1,18 +1,14 @@
-bibentry(bibtype = "Article",
-  title        = "xxx",
-  author       = c(person(given = "Chris",
-                          family = "Groendyke",
-                          email = "groendyke@rmu.edu"),
-                   person(given = "xxx",
-                          family = "xxx",
-                          email = "xxx")),
-  journal      = "Journal of xxx",
-  year         = "20xx",
-  volume       = "xx",
-  number       = "xx",
-  pages        = "x--xx",
-  doi          = "xxx",
+citHeader("To cite the 'AutoSULT' package in publications use:")
 
-  header       = "To cite AutoSULT in publications use:"
-)
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+vers <- paste("R package version", meta$Version)
 
+citEntry(entry="Manual",
+         title = "AutoSULT: Automatic Mortality Table Problem Generation",
+         author = as.person("Chris Groendyke"),
+         year = year,
+         note = vers,
+         textVersion =
+         paste("Chris Groendyke (",
+               year,"). AutoSULT: Automatic Mortality Table Problem Generation. ",
+               vers, ".", sep=""))
