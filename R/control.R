@@ -4,16 +4,6 @@ Ch3QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
   qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
   options(scipen = 999)
 
-  # Read in and format SULT table
-  #SULT <- read.csv("SingleLife.csv", header = FALSE, col.names = c("x", "lx", "qx", "ax", "Ax", "A2x", "ax10", "Ax10", "ax20", "Ax20", "Ex5", "Ex10", "Ex20"))
-  #SULT[, 4] <- round(SULT[, 4], digits = 4)
-  #pad <- array(dim = c(19, dim(SULT)[2]), dimnames = list(NULL, colnames(SULT)))
-  #SULT <- rbind(pad, SULT) # Pad rows to get row equal to age for convenience 
-  
-  # Shouldn't need to source/library these once they're in a package
-  #source("strings.R"); source("calcs.R"); source("calcfuncsch3.R")
-  #library(rmarkdown); library(knitr); library(kableExtra)
-  
   # Headers for Q and A files
   cat("\\section*{Chapter 3 SULT Problems}  \n  $~$  \n", file = qfilein)
   cat("\\subsection*{Notes}", file = qfilein, append = TRUE)
@@ -88,16 +78,6 @@ Ch4QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
   qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
   options(scipen = 999)
   
-  # Read in and format SULT table
-  #SULT <- read.csv("SingleLife.csv", header = FALSE, col.names = c("x", "lx", "qx", "ax", "Ax", "A2x", "ax10", "Ax10", "ax20", "Ax20", "Ex5", "Ex10", "Ex20"))
-  #SULT[, 4] <- round(SULT[, 4], digits = 4)
-  #pad <- array(dim = c(19, dim(SULT)[2]), dimnames = list(NULL, colnames(SULT)))
-  #SULT <- rbind(pad, SULT) # Pad rows to get row equal to age for convenience 
-  
-  # Shouldn't need to source/library these once they're in a package
-  #source("strings.R"); source("calcs.R"); source("calcfuncsch4.R")
-  #library(rmarkdown); library(knitr); library(kableExtra)
-  
   # Headers for Q and A files
   cat("\\section*{Chapter 4 SULT Problems}  \n  $~$  \n", file = qfilein)
   cat("\\subsection*{Notes}", file = qfilein, append = TRUE)
@@ -168,16 +148,6 @@ Ch5QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
 {
   qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
   options(scipen = 999)
-  
-  # Read in and format SULT table
-  #SULT <- read.csv("SingleLife.csv", header = FALSE, col.names = c("x", "lx", "qx", "ax", "Ax", "A2x", "ax10", "Ax10", "ax20", "Ax20", "Ex5", "Ex10", "Ex20"))
-  #SULT[, 4] <- round(SULT[, 4], digits = 4)
-  #pad <- array(dim = c(19, dim(SULT)[2]), dimnames = list(NULL, colnames(SULT)))
-  #SULT <- rbind(pad, SULT) # Pad rows to get row equal to age for convenience 
-  
-  # Shouldn't need to source/library these once they're in a package
-  #source("strings.R"); source("calcs.R"); source("calcfuncsch5.R")
-  #library(rmarkdown); library(knitr); library(kableExtra)
   
   # Headers for Q and A files
   cat("\\section*{Chapter 5 SULT Problems}  \n  $~$  \n", file = qfilein)
