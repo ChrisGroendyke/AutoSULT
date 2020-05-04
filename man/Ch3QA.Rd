@@ -3,7 +3,7 @@
 \title{Chapter 3 Problem and Solution Generation
 }
 \description{
-Randomly generates and typesets problems of 6 specified types from Chapter 3 of ALMCR2e.  All problems use the Standard Ultimate Life Table (SULT) a.k.a. Standard Ultimate Survival Model (SUSM).  This function generates two PDF files, one listing the problems, and another with the step-by-step solutions. 
+Randomly generates and typesets problems of 6 specified types from Chapter 3 of ALMCR3e.  All problems use the Standard Ultimate Life Table (SULT) a.k.a. Standard Ultimate Survival Model (SUSM).  This function generates two PDF files, one listing the problems, and another with the step-by-step solutions. 
 }
 \usage{
 Ch3QA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
@@ -39,7 +39,7 @@ Specify the types of problems generated using either the (scalar) \code{probsper
 Invoked for the side effect of producing the two PDF files.
 }
 \references{
-Dickson, D.C.M., Hardy, M.R., Waters, H.R., 2013 \emph{Actuarial Mathematics for Life Contingent Risks}, Second Edition, Cambridge, UK: Cambridge University Press.
+Dickson, D.C.M., Hardy, M.R., Waters, H.R., 2020 \emph{Actuarial Mathematics for Life Contingent Risks}, Third Edition, Cambridge, UK: Cambridge University Press.
 }
 \author{
 Chris Groendyke \email{groendyke@rmu.edu}
