@@ -12,6 +12,7 @@ devtools::install_github("ChrisGroendyke/AutoSULT", build_vignettes = TRUE)
 If the functions in the package aren't working, there's a good chance that R can't find your installation of LaTeX.  This can sometimes be fixed with the tinytex package:
 
 install.packages("tinytex")
+
 tinytex::install_tinytex()
 
 The AutoSULT package has a vignette that explains everything you need to know in order to generate problem and solution files.
