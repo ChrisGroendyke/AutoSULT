@@ -51,7 +51,7 @@ Chris Groendyke \email{groendyke@rmu.edu}
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{Ch4QA}} and \code{\link{Ch5QA}} for analogous functions for generating problems and solutions for material in chapters 4 and 5, respectively.
+\code{\link{Ch4QA}}, \code{\link{Ch5QA}}, and \code{\link{Ch9QA}} for analogous functions for generating problems and solutions for material in chapters 4, 5 and 9, respectively.
 }
 \examples{
 # Generate 4 problems of each type.

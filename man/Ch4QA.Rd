@@ -51,16 +51,14 @@ Chris Groendyke \email{groendyke@rmu.edu}
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{Ch3QA}} and \code{\link{Ch5QA}} for analogous functions for generating problems and solutions for material in chapters 3 and 5, respectively.
+\code{\link{Ch3QA}}, \code{\link{Ch5QA}}, and \code{\link{Ch9QA}} for analogous functions for generating problems and solutions for material in chapters 3, 5, and 9, respectively.
 }
 \examples{
 # Generate 3 problems of each type.
 Ch4QA(probspertype = 3)
 
-# Generate 10 problems of random types.
-probvec <- sample(1:16, 10, TRUE)
-for (i in 1:16) probvec[i] <- sum(probvec == i)
-Ch4QA(probspec = probvec)
+# Generate 10 total problems of random types.
+Ch4QA(probspec = tabulate(sample(1:16, 10, TRUE), nbins=16))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

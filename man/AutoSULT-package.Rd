@@ -20,7 +20,9 @@ The DESCRIPTION file:
 Maintainer: \packageMaintainer{AutoSULT}
 }
 \references{
-Dickson, D.C.M., Hardy, M.R., Waters, H.R., 2013 \emph{Actuarial Mathematics for Life Contingent Risks}, Second Edition, Cambridge, UK: Cambridge University Press.
+Dickson, D.C.M., Hardy, M.R., Waters, H.R., 2020 \emph{Actuarial Mathematics for Life Contingent Risks}, Third Edition, Cambridge, UK: Cambridge University Press.
+
+D. Beauchemin and V. Goulet, \emph{Actuarial symbols of life contingencies and financial mathematics}, 2019. URL: \url{https://ctan.org/pkg/actuarialsymbol}.
 }
 \keyword{package}
 \examples{

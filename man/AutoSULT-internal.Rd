@@ -48,6 +48,18 @@
 \alias{s.tpx}
 \alias{s.tqx}
 \alias{s.WLanndue}
+\alias{s.npxy}
+\alias{s.nqxy}
+\alias{s.npx2}
+\alias{s.nqx2}
+\alias{s.nExy}
+\alias{s.nExy2}
+\alias{s.terminsj2}
+\alias{s.WLjt}
+\alias{s.WLjt2}
+\alias{s.termannduejt}
+\alias{s.annduerev}
+\alias{s.WLannduejt}
 \description{
   Internal AutoSULT functions.  Functions s.xxx() create commonly-used strings for typesetting, and functions n.xxx() perform commonly-used calculations.
 }
