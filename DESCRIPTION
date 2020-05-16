@@ -14,5 +14,5 @@ Imports:
     magrittr
 LazyData: true
 LazyLoad: yes
-License: GPL-2
+License: file LICENSE
 VignetteBuilder: knitr
