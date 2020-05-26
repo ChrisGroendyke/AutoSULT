@@ -49,3 +49,5 @@ s.WLjt2 <- function(age, age2) return(paste0("\\Ax{\\joint{", age, ":", age2, "}
 s.termannduejt <- function(age, age2, nn) return(paste0("\\ax**{", age, ":", age2, ":\\angl{", nn, "}}"))
 s.annduerev <- function(age, age2) return(paste0("\\ax**{", age, "|", age2, "}"))
 s.WLannduejt <- function(age, age2) return(paste0("\\ax**{", age, ":", age2, "}"))
+fbox <- function(ans, ansbox) return(ifelse(ansbox,paste0("\\fbox{", ans, "}"),ans))
+  

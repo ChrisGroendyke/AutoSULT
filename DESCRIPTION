@@ -1,6 +1,6 @@
 Package: AutoSULT
-Version: 1.0-5
-Date: 2020-05-12
+Version: 1.0-5.29
+Date: 2020-05-25
 Title: Automatic Mortality Table Problem Generation
 Authors@R: person("Chris", "Groendyke", email = "groendyke@rmu.edu", role = c("aut", "cre"))
 Maintainer: Chris Groendyke <groendyke@rmu.edu>

@@ -257,8 +257,9 @@ Ch9QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
   }
   probs <- sum(probspec)
   age <- as.integer(runif(probs, 30, 70))
-  age2 <- ifelse(runif(probs) < 0.5, age, age+10)
-  nn <- as.integer(runif(probs, 1, 77 - age))
+  age2 <- as.integer(runif(probs, 30, 70))
+  nn <- as.integer(runif(probs, 5, 77 - pmax(age, age2)))
+  nn <- ifelse(age + age2 < 90, nn + 10, nn)
 
   probtypes <- rep(1:typecount, times = probspec)
   if (randomize) probtypes <- sample(probtypes)
@@ -293,7 +294,7 @@ Ch9QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
     cat("\\subsection*{Notes}", file = qfilein, append = TRUE)
     cat("\\begin{itemize}", file = qfilein, append = TRUE)
     cat("\\item $n, x, \\text{ and } y$ are integers", file = qfilein, append = TRUE)
-    cat("\\item $y = x \\text{ or } x+10$", file = qfilein, append = TRUE)
+    cat("\\item For some problem types, $y = x \\text{ or } x+10$", file = qfilein, append = TRUE)
     cat(paste0("\\item Question order is ", ifelse(randomize, "", "not"), " randomized"), file = qfilein, append = TRUE)
     cat("\\end{itemize} \n  $~$  \n", file = qfilein, append = TRUE)
   }
