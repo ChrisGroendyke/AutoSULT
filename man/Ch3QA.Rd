@@ -7,7 +7,7 @@ Randomly generates and typesets problems of 6 specified types from Chapter 3 of 
 }
 \usage{
 Ch3QA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
-  qfile = "qfilech3", afile = "afilech3", keeprmd = FALSE)
+  qfile = "qfilech3", afile = "afilech3", keeptex = FALSE)
 }
 \arguments{
   \item{probspertype}{
@@ -28,8 +28,8 @@ Name (and path) to write question PDF file.
   \item{afile}{
 Name (and path) to write solution PDF file.
 }
-  \item{keeprmd}{
-Boolean variable controlling whether the Rmd files compiled to produce the PDFs are kept (TRUE) or deleted (FALSE) after the PDF is rendered.
+  \item{keeptex}{
+Boolean variable controlling whether the .tex files compiled to produce the PDFs are kept (TRUE) or deleted (FALSE) after the PDF is rendered.
 }
 }
 \details{

@@ -53,7 +53,7 @@ problistch4[[5]] <- function(SULT, age, nn, uu, mm, ansbox = TRUE) # $\Ax{x:\ang
   if (age < 55) age <- age + 35 # 2 and 3 year term EPVs are too small for younger ages
   termins <- 0
   for (k in 0:(nn - 1)) termins <- termins + n.ktqx(SULT, age, k, 1) / (1 + ii/100)^(k + 1)
-  s.prob <- paste0(s.termins(age, nn), " \\quad i = ", ii, "\\%")
+  s.prob <- paste0(s.termins(age, nn), ", \\quad i = ", ii, "\\%")
   s.ans <- paste0(s.termins(age, nn), "=", s.tqx(age, 1), "\\cdot (",1 + ii/100,")^{-1}")
   for (k in 1:(nn - 1)) s.ans <- paste0(s.ans, "+", s.times(s.ktqx(age, k, 1), paste0("(",1 + ii/100, ")^{",-(k + 1),"}")))
   s.ans <- paste0(s.ans, "$  \n\\hspace*{0.2in}$\\displaystyle ")
@@ -74,7 +74,7 @@ problistch4[[6]] <- function(SULT, age, nn, uu, mm, ansbox = TRUE) # $\Ax*{x:\an
   for (k in 0:(nn - 1)) termins <- termins + n.ktqx(SULT, age, k, 1) / (1 + ii/100)^(k + 1)
   adj <- round((ii/100)/log(1 + ii/100), 5)
   terminsc <- round(adj * termins, 5)
-  s.prob <- paste0(s.terminsc(age, nn), " \\quad i = ", ii, "\\%")
+  s.prob <- paste0(s.terminsc(age, nn), ", \\quad i = ", ii, "\\%")
   s.ans <- paste0(s.terminsc(age, nn), "\\overset{UDD}{=} \\frac{i}{\\delta} \\cdot", s.termins(age, nn), " = (", adj, ")\\left(", s.tqx(age, 1), "\\cdot (",1 + ii/100,")^{-1}")
   for (k in 1:(nn - 1)) s.ans <- paste0(s.ans, "+", s.times(s.ktqx(age, k, 1), paste0("(",1 + ii/100, ")^{",-(k + 1),"}")))
   s.ans <- paste0(s.ans, "\\right)$  \n\\hspace*{0.2in}$\\displaystyle ")
@@ -95,7 +95,7 @@ problistch4[[7]] <- function(SULT, age, nn, uu, mm, ansbox = TRUE) # $\Ax*{x:\an
   im <- ((1 + ii/100)^(1/mm) - 1) * mm
   adj <- round((ii/100)/im, 5)
   terminsm <- round(adj * termins, 5)
-  s.prob <- paste0(s.terminsm(age, nn, mm), " \\quad i = ", ii, "\\%") 
+  s.prob <- paste0(s.terminsm(age, nn, mm), ", \\quad i = ", ii, "\\%") 
   s.ans <- paste0(s.terminsm(age, nn, mm), "\\overset{UDD}{=} \\frac{i}{i^{(", mm, ")}} \\cdot", s.termins(age, nn), " = (", adj, ")\\left(", s.tqx(age, 1), "\\cdot (",1 + ii/100,")^{-1}")
   for (k in 1:(nn - 1)) s.ans <- paste0(s.ans, "+", s.times(s.ktqx(age, k, 1), paste0("(",1 + ii/100, ")^{",-(k + 1),"}")))
   s.ans <- paste0(s.ans, "\\right)$  \n\\hspace*{0.2in}$\\displaystyle ")

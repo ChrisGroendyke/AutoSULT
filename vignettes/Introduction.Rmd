@@ -21,7 +21,7 @@ library(kableExtra)
 
 # Introduction
 
-In teaching life contingencies courses, I've often noticed that some students struggle to execute basic calculations from a standard life table.  These might include survival probability calculations (possibly including fractional age assumptions), and EPVs of various types of insurance and annuity coverages.
+In teaching life contingencies courses, I've often noticed that some students struggle to execute basic calculations from a standard life table.  These might include survival probability calculations (possibly including fractional age assumptions), and EPVs (Expected Present Values, also sometimes referred to as APVs or Actuarial Present Values) of various types of insurance and annuity coverages.
 
 A couple of observations regarding these problems:
 
@@ -35,7 +35,7 @@ The target audience for this software would be instructors of university courses
 
 # The Standard Ultimate Life Table
 
-The mortality table (life table) used in this software is the the \textbf{Standard Ultimate Survival Model (SUSM)} used by the Actuarial Mathematics for Life Contingent Risks textbook, $3^{rd}$ edition, textbook, by Dickson, Hardy, and Waters (AMLCR3e hereafter).  This mortality table, and its underlying survival model are used in many of the examples and exercises in this textbook.  The same life table (referred to there as the \textbf{Standard Ultimate Life Table (SULT)}) is also currently (as of Spring 2020) used as one of the standard tables in the Society of Actuaries (SOA) Long Term Actuarial Mathematics (LTAM) exam.  The single life table spans ages 20 to 100, while the joint life table spans ages 30 to 80.
+The mortality table (life table) used in this software is the the \textbf{Standard Ultimate Survival Model (SUSM)} used by the Actuarial Mathematics for Life Contingent Risks textbook, $3^{rd}$ edition, textbook, by Dickson, Hardy, and Waters (AMLCR3e hereafter).  This mortality table, and its underlying survival model are used in many of the examples and exercises in this textbook.  The same life table (referred to there as the \textbf{Standard Ultimate Life Table (SULT)}) is also currently (as of Fall 2020) used as one of the standard tables in the Society of Actuaries (SOA) Long Term Actuarial Mathematics (LTAM) exam.  The single life table spans ages 20 to 100, while the joint life table spans ages 30 to 80.
 
 The survival model underlying the mortality table is based on Makeham's law, so that the force of mortality at attained age $x$, which is often denoted by $\mu_x$, is given by the formula \[ \mu_x = A + Bc^x, \] with the SUSM using the parameter values $A = 0.000222, B = 2.7 \times 10^{-6}, \text{ and } c = 1.124.$  Where an interest rate is needed, the default is an annual effective interest rate of $i = 5\%$.  This interest rate is used for all of the insurance and annuity expected present values (EPVs) pre-calculated in the table.  The joint life portion of the table assumes future independent lifetimes.  An excerpt of the single life and joint life portions of the SULT are given in Tables 1 and 2, respectively; a PDF file containing the SULT (single life and joint life) can be found at the Society of Actuaries website.\footnote{\url{https://www.soa.org/globalassets/assets/Files/Edu/2018/ltam-standard-ultimate-life-table.pdf}}
 
@@ -120,7 +120,7 @@ There are four main user-level functions in the package, corresponding to the fo
 
 ```{r funcdef, eval=FALSE}
 ChXQA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
-  qfile = "qfilechX", afile = "afilechX", keeprmd = FALSE)
+  qfile = "qfilechX", afile = "afilechX", keeptex = FALSE)
 ```
 
 Each of these functions produces two PDFs, one containing the problems generated, and one containing the solutions to these problems.  These functions don't return any values, and are solely used for the side effect of generating these two PDFs.
@@ -151,7 +151,7 @@ Several other parameters to these functions are available to help customize the 
 | $\tt{probsummary}$ | Boolean variable controlling whether a summary of the problem types generated will be placed at the end of the question file |
 | $\tt{qfile}$ | Name (and path) to write question PDF file |
 | $\tt{afile}$ | Name (and path) to write solution PDF file |
-| $\tt{keeprmd}$ | Boolean variable controlling whether the Rmd files compiled to produce the PDFs are kept ($\tt{TRUE}$) or deleted ($\tt{FALSE}$) after the PDF is rendered |
+| $\tt{keeptex}$ | Boolean variable controlling whether the .tex files compiled to produce the PDFs are kept ($\tt{TRUE}$) or deleted ($\tt{FALSE}$) after the PDF is rendered |
 
 # Acknowledgements
 

@@ -1,5 +1,5 @@
 
-Ch3QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech3", afile = "afilech3", keeprmd = FALSE)
+Ch3QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech3", afile = "afilech3", keeptex = FALSE)
 {
   qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
   options(scipen = 999)
@@ -27,8 +27,8 @@ Ch3QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
   probs <- sum(probspec)
   
   age <- as.integer(runif(probs, 20, 80))
-  tt <- as.integer(runif(probs, 1, 97 - age))
-  kk <- as.integer(runif(probs, 1, 99 - age - tt))
+  tt <- as.integer(runif(probs, 1, 94 - age))
+  kk <- as.integer(runif(probs, 1, 97 - age - tt))
   rr <- sample(1:9, probs, replace = TRUE) / 10
   ss <- sample(1:9, probs, replace = TRUE) / 10
   ww <- sample(1:9, probs, replace = TRUE) / 10
@@ -74,12 +74,12 @@ Ch3QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
     cat("\\end{itemize}", file = qfilein, append = TRUE)
 }
   
-  render(qfilein, pdf_document(extra_dependencies = "actuarialsymbol"))
-  render(afilein, pdf_document(extra_dependencies = "actuarialsymbol"))
-  if (!keeprmd) {invisible(file.remove(qfilein)); invisible(file.remove(afilein))} #cleanup
+  render(qfilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  render(afilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  invisible(file.remove(qfilein)); invisible(file.remove(afilein)) #cleanup
 }
 
-Ch4QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech4", afile = "afilech4", keeprmd = FALSE)
+Ch4QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech4", afile = "afilech4", keeptex = FALSE)
 {
   qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
   options(scipen = 999)
@@ -107,8 +107,8 @@ Ch4QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
   probs <- sum(probspec)
   
   age <- as.integer(runif(probs, 20, 80))
-  nn <- as.integer(runif(probs, 1, 97 - age))
-  uu <- as.integer(runif(probs, 1, 99 - age - nn))
+  nn <- as.integer(runif(probs, 1, 94 - age))
+  uu <- as.integer(runif(probs, 1, 97 - age - nn))
   mm <- sample(c(2, 4, 12), probs, replace = TRUE)
   
   probtypes <- rep(1:typecount, times = probspec)
@@ -149,13 +149,13 @@ Ch4QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
     cat("\\end{itemize} \n  $~$  \n", file = qfilein, append = TRUE)
   }
   
-  render(qfilein, pdf_document(extra_dependencies = "actuarialsymbol"))
-  render(afilein, pdf_document(extra_dependencies = "actuarialsymbol"))
-  if (!keeprmd) {invisible(file.remove(qfilein)); invisible(file.remove(afilein))} #cleanup
+  render(qfilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  render(afilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  invisible(file.remove(qfilein)); invisible(file.remove(afilein)) #cleanup
   
 }
 
-Ch5QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech5", afile = "afilech5", keeprmd = FALSE)
+Ch5QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech5", afile = "afilech5", keeptex = FALSE)
 {
   qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
   options(scipen = 999)
@@ -183,8 +183,8 @@ Ch5QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
   }
   probs <- sum(probspec)
   age <- as.integer(runif(probs, 20, 80))
-  nn <- as.integer(runif(probs, 1, 97 - age))
-  uu <- as.integer(runif(probs, 1, 99 - age - nn))
+  nn <- as.integer(runif(probs, 1, 94 - age))
+  uu <- as.integer(runif(probs, 1, 97 - age - nn))
   mm <- sample(c(2, 4, 12), probs, replace = TRUE)
   FAA <- ifelse(runif(probs) < 0.5, "UDD", "W2")
   
@@ -224,13 +224,13 @@ Ch5QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
     cat("\\end{itemize} \n  $~$  \n", file = qfilein, append = TRUE)
   }
   
-  render(qfilein, pdf_document(extra_dependencies = "actuarialsymbol"))
-  render(afilein, pdf_document(extra_dependencies = "actuarialsymbol"))
-  if (!keeprmd) {invisible(file.remove(qfilein)); invisible(file.remove(afilein))} #cleanup
+  render(qfilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  render(afilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  invisible(file.remove(qfilein)); invisible(file.remove(afilein)) #cleanup
   
 }
 
-Ch9QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech9", afile = "afilech9", keeprmd = FALSE)
+Ch9QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech9", afile = "afilech9", keeptex = FALSE)
 {
   qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
   options(scipen = 999)
@@ -299,9 +299,9 @@ Ch9QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
     cat("\\end{itemize} \n  $~$  \n", file = qfilein, append = TRUE)
   }
   
-  render(qfilein, pdf_document(extra_dependencies = "actuarialsymbol"))
-  render(afilein, pdf_document(extra_dependencies = "actuarialsymbol"))
-  if (!keeprmd) {invisible(file.remove(qfilein)); invisible(file.remove(afilein))} #cleanup
+  render(qfilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  render(afilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  invisible(file.remove(qfilein)); invisible(file.remove(afilein)) #cleanup
   
 }
 

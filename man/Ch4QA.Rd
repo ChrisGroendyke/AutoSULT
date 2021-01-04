@@ -7,7 +7,7 @@ Randomly generates and typesets problems of 16 specified types from Chapter 4 of
 }
 \usage{
 Ch4QA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
-  qfile = "qfilech4", afile = "afilech4", keeprmd = FALSE)
+  qfile = "qfilech4", afile = "afilech4", keeptex = FALSE)
 }
 \arguments{
   \item{probspertype}{
@@ -28,8 +28,8 @@ Name (and path) to write question PDF file.
   \item{afile}{
 Name (and path) to write solution PDF file.
 }
-  \item{keeprmd}{
-Boolean variable controlling whether the Rmd files compiled to produce the PDFs are kept (TRUE) or deleted (FALSE) after the PDF is rendered.
+  \item{keeptex}{
+Boolean variable controlling whether the .tex files compiled to produce the PDFs are kept (TRUE) or deleted (FALSE) after the PDF is rendered.
 }
 }
 \details{
@@ -57,7 +57,7 @@ Chris Groendyke \email{groendyke@rmu.edu}
 # Generate 3 problems of each type.
 Ch4QA(probspertype = 3)
 
-# Generate 10 total problems of random types.
+# Generate 10 total problems from among the 16 Ch. 4 problem types.
 Ch4QA(probspec = tabulate(sample(1:16, 10, TRUE), nbins=16))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

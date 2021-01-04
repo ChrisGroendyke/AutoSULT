@@ -7,7 +7,7 @@ Randomly generates and typesets problems of 9 specified types from Chapter 9 of 
 }
 \usage{
 Ch9QA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
-  qfile = "qfilech9", afile = "afilech9", keeprmd = FALSE)
+  qfile = "qfilech9", afile = "afilech9", keeptex = FALSE)
 }
 \arguments{
   \item{probspertype}{
@@ -28,8 +28,8 @@ Name (and path) to write question PDF file.
   \item{afile}{
 Name (and path) to write solution PDF file.
 }
-  \item{keeprmd}{
-Boolean variable controlling whether the Rmd files compiled to produce the PDFs are kept (TRUE) or deleted (FALSE) after the PDF is rendered.
+  \item{keeptex}{
+Boolean variable controlling whether the .tex files compiled to produce the PDFs are kept (TRUE) or deleted (FALSE) after the PDF is rendered.
 }
 }
 \details{
@@ -56,8 +56,7 @@ Chris Groendyke \email{groendyke@rmu.edu}
 # Generate 3 problems of each type.
 Ch9QA(probspertype = 3) 
 
-# Generate 5 problems from among the 10 Ch. 9 problem types.
-# Generate 10 total problems of random types.
+# Generate 5 total problems from among the 10 Ch. 9 problem types.
 Ch9QA(probspec = tabulate(sample(1:10, 5, TRUE), nbins=10))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
