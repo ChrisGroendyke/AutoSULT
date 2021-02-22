@@ -1,10 +1,13 @@
 ---
 title: 'AutoSULT: An R Package for Generating Life Contingencies Problems'
-author:
-  affiliation: Department of Mathematics, Robert Morris University
-  email: groendyke@rmu.edu
-  name: Chris Groendyke
-date: "04 January 2020"
+authors:
+  - name: Chris Groendyke
+  - orcid: 0
+  - affiliation: 1
+affiliations:
+  - name: Department of Mathematics, Robert Morris University
+  - index: 1
+date: "21 February 2020"
 output:
   pdf_document: default
   html_document:
