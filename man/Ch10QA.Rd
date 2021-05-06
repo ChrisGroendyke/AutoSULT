@@ -1,20 +1,20 @@
-\name{Ch9QA}
-\alias{Ch9QA}
-\title{Chapter 9 Problem and Solution Generation
+\name{Ch10QA}
+\alias{Ch10QA}
+\title{Chapter 10 Problem and Solution Generation
 }
 \description{
-Randomly generates and typesets problems of 9 specified types from Chapter 9 of ALMCR3e.  All problems use the Standard Ultimate Life Table (SULT) a.k.a. Standard Ultimate Survival Model (SUSM).  This function generates two PDF files, one listing the problems, and another with the step-by-step solutions.  The problems in Chapter 9 all deal with joint life situations, and assume independent lives.
+Randomly generates and typesets problems of 10 specified types from Chapter 10 of ALMCR3e.  All problems use the Standard Ultimate Life Table (SULT) a.k.a. Standard Ultimate Survival Model (SUSM).  This function generates two PDF files, one listing the problems, and another with the step-by-step solutions.  The problems in Chapter 10 all deal with joint life situations, and assume independent lives.
 }
 \usage{
-Ch9QA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
-  qfile = "qfilech9", afile = "afilech9", keeptex = FALSE)
+Ch10QA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
+  qfile = "qfilech10", afile = "afilech10", keeptex = FALSE)
 }
 \arguments{
   \item{probspertype}{
-Number of problems of each type to generate.  Use this argument (instead of \code{probspec})to generate the same number of problems for each of the 10 types of Chapter 9 SULT problems.
+Number of problems of each type to generate.  Use this argument (instead of \code{probspec}) to generate the same number of problems for each of the 10 types of Chapter 10 SULT problems.
 }
   \item{probspec}{
-Vector of length 10 giving the number of each of the 10 types of Chapter 9 SULT problems to generate.  Use this argument (instead of \code{probspertype}) to generate different numbers of problems for the 10 types of Chapter 9 SULT problems.
+Vector of length 10 giving the number of each of the 10 types of Chapter 10 SULT problems to generate.  Use this argument (instead of \code{probspertype}) to generate different numbers of problems for the 10 types of Chapter 10 SULT problems.
 }
   \item{randomize}{
 Boolean variable controlling whether the problems will be randomized (TRUE), or appear in problem type order (FALSE).
@@ -54,10 +54,10 @@ Chris Groendyke \email{groendyke@rmu.edu}
 }
 \examples{
 # Generate 3 problems of each type.
-Ch9QA(probspertype = 3) 
+Ch10QA(probspertype = 3) 
 
-# Generate 5 total problems from among the 10 Ch. 9 problem types.
-Ch9QA(probspec = tabulate(sample(1:10, 5, TRUE), nbins=10))
+# Generate 5 total problems from among the 10 Ch. 10 problem types.
+Ch10QA(probspec = tabulate(sample(1:10, 5, TRUE), nbins=10))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

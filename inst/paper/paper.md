@@ -4,7 +4,7 @@ author:
   affiliation: Department of Mathematics, Robert Morris University
   email: groendyke@rmu.edu
   name: Chris Groendyke
-date: "04 January 2020"
+date: "06 May 2021"
 output:
   pdf_document: default
   html_document:
@@ -45,28 +45,28 @@ The $\tt{AutoSULT}$ package for R is available for download on GitHub at https:/
 devtools::install_github("ChrisGroendyke/AutoSULT", build_vignettes = TRUE)
 ```
 
-There are four main user-level functions in the package, corresponding to the four chapters in _AMLCR3e_ that the problems are associated with.  These functions are named $\tt{ChXQA()}$, where $\tt{X}$ is 3, 4, 5, or 9.  The problems implemented include 6 types of problems from Ch. 3 of _AMLCR3e_, 16 types of problems from Ch. 4, 13 types of problems from Ch. 5, and 10 types of problems from Ch. 9. Each problem consists of the calculation of one specific probability or EPV, using entries from the life table.  The ages and (if applicable) product term lengths and deferral periods are randomly generated and are different for each problem, so that a very large number of distinct problems can be created.  
+There are four main user-level functions in the package, corresponding to the four chapters in _AMLCR3e_ that the problems are associated with.  These functions are named $\tt{ChXQA()}$, where $\tt{X}$ is 3, 4, 5, or 10.  The problems implemented include 6 types of problems from Ch. 3 of _AMLCR3e_, 16 types of problems from Ch. 4, 13 types of problems from Ch. 5, and 10 types of problems from Ch. 10. Each problem consists of the calculation of one specific probability or EPV, using entries from the life table.  The ages and (if applicable) product term lengths and deferral periods are randomly generated and are different for each problem, so that a very large number of distinct problems can be created.  
 
 [^3]: If the package functions do not appear to be working, the most likely cause is that R cannot find your \LaTeX\ installation; this can usually be fixed with the $\tt{TinyTeX}$ [@tinytex] package.
 
-The output from the $\tt{ChXQA()}$ functions is customized by using the various input parameters, which specify how many of which types of problems should be generated, whether the problem order is randomized, whether a summary table of problems generated is included, etc.  A full demonstration of these functions and their parameters is given in the package vignette and function documentation.  To demonstrate the functionality, using the following code, we could produce a set of questions and solutions containing 3 problems of each of the 10 Ch. 9 problem types, in randomized order:
+The output from the $\tt{ChXQA()}$ functions is customized by using the various input parameters, which specify how many of which types of problems should be generated, whether the problem order is randomized, whether a summary table of problems generated is included, etc.  A full demonstration of these functions and their parameters is given in the package vignette and function documentation.  To demonstrate the functionality, using the following code, we could produce a set of questions and solutions containing 3 problems of each of the 10 Ch. 10 problem types, in randomized order:
 
 ```
-Ch9QA(probspertype = 3, randomize = TRUE)
+Ch10QA(probspertype = 3, randomize = TRUE)
 ```
 
 This produces two PDF documents, excerpts of which are shown below:
 
 \begin{center}
-\frame{\includegraphics[trim= 0.3in 5.5in 0.6in 0.6in, clip]{qfilech9.pdf}}
+\frame{\includegraphics[trim= 0.3in 5.5in 0.6in 0.6in, clip]{qfilech10.pdf}}
 
 \vspace{0.2 in}
 
-\frame{\includegraphics[trim= 0.3in 5.5in 0.6in 0.6in, clip]{afilech9.pdf}}
+\frame{\includegraphics[trim= 0.3in 6.0in 0.6in 0.6in, clip]{afilech10.pdf}}
 \end{center}
 
 # Acknowledgements
 
-Many thanks to the following people, who have helped with the implementation and testing of this package: Adam Combs, Brian Hartman, Diana Skrzydlo, and the students in my ASCI 4100 courses at Robert Morris University.
+Many thanks to the following people, who have helped with the implementation and testing of this package: Adam Combs, Brian Hartman, Diana Skrzydlo, and the students in my ASCI 4100 and ASCI 4110 courses at Robert Morris University.
 
 # References

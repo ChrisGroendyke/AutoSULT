@@ -1,7 +1,7 @@
 export(Ch3QA)
 export(Ch4QA)
 export(Ch5QA)
-export(Ch9QA)
+export(Ch10QA)
 importFrom("stats", "runif")
 importFrom("kableExtra", "kable_styling", "row_spec")
 importFrom("knitr", "kable")

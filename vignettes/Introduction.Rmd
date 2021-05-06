@@ -69,7 +69,7 @@ print(printobj)
 
 # Problem Types
 
-The problems implemented include 6 types of problems from Ch. 3 of AMLCR3e, 16 types of problems from Ch. 4 of AMLCR3e, 13 types of problems from Ch. 5 of AMLCR3e, and 10 types of problems from Ch. 9 of AMLCR3e. Each problem consists of the calculation of one specific probability or EPV, using entries in the life table.  The ages and (if applicable) product term lengths and deferral periods are randomly generated and are different for each problem, so that a very large number of distinct problems can be created.  The specific types of problems for these chapters are given in the tables below, where UDD and CF refer to the Uniform Distribution of Deaths and Constant Force of Mortality fractional age assumptions (see pages 61 and 65 of AMLCR3e, respectively, for definitions), and W2 refers to the 2-term Woolhouse formula.  (This formula is given on page 167 of AMLCR3e; a derivation can be found on pages 730--731.)
+The problems implemented include 6 types of problems from Ch. 3 of AMLCR3e, 16 types of problems from Ch. 4 of AMLCR3e, 13 types of problems from Ch. 5 of AMLCR3e, and 10 types of problems from Ch. 10 of AMLCR3e. Each problem consists of the calculation of one specific probability or EPV, using entries in the life table.  The ages and (if applicable) product term lengths and deferral periods are randomly generated and are different for each problem, so that a very large number of distinct problems can be created.  The specific types of problems for these chapters are given in the tables below, where UDD and CF refer to the Uniform Distribution of Deaths and Constant Force of Mortality fractional age assumptions (see pages 61 and 65 of AMLCR3e, respectively, for definitions), and W2 refers to the 2-term Woolhouse formula.  (This formula is given on page 167 of AMLCR3e; a derivation can be found on pages 730--731.)
 \newpage
 ```{r probtypesch3, echo=FALSE, results='asis'}
 # Chapter 3 table
@@ -103,20 +103,20 @@ print(knitr::kable(probdat, format = "pandoc", align = "cc", booktabs = FALSE, l
 
 ```
 
-```{r probtypesch9, echo=FALSE, results='asis'}
-# Chapter 9 table
+```{r probtypesch10, echo=FALSE, results='asis'}
+# Chapter 10 table
 typecount <- 10
 probdescs <- c("${_np_{xy}}$", "${_nq_{xy}}$", "$\\px[n]{\\joint{xy}}$", "$\\qx[n]{\\joint{xy}}$", "${_nE_{xy}}$", "${_nE_{\\joint{xy}}}$", "$\\Ax{\\itop{\\overanglebracket{xy}}:\\angl{n}}$", "$\\Ax{\\joint{xy}}$", "$\\ax**{x:y:\\angl{20}}$", "$\\ax**{x|y}$")
 probdat <- array(c(1:typecount, probdescs), dim = c(typecount, 2))
 colnames(probdat) <- c("Problem Type", "Problem Description")
 
-print(knitr::kable(probdat, format = "pandoc", align = "cc", booktabs = FALSE, linesep = "", escape = FALSE, caption = "Chapter 9 Problem Types"))
+print(knitr::kable(probdat, format = "pandoc", align = "cc", booktabs = FALSE, linesep = "", escape = FALSE, caption = "Chapter 10 Problem Types"))
 
 ```
 
 # Usage
 
-There are four main user-level functions in the package, corresponding to the four chapters in AMLCR3e that the problems are associated with.  These functions are named $\tt{ChXQA()}$, where $\tt{X}$ is 3, 4, 5, or 9, and all have identical parameters and default values (with the exception of the default names of the problem and solution files):
+There are four main user-level functions in the package, corresponding to the four chapters in AMLCR3e that the problems are associated with.  These functions are named $\tt{ChXQA()}$, where $\tt{X}$ is 3, 4, 5, or 10, and all have identical parameters and default values (with the exception of the default names of the problem and solution files):
 
 ```{r funcdef, eval=FALSE}
 ChXQA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,

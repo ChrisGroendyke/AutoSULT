@@ -230,13 +230,13 @@ Ch5QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
   
 }
 
-Ch9QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech9", afile = "afilech9", keeptex = FALSE)
+Ch10QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech10", afile = "afilech10", keeptex = FALSE)
 {
   qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
   options(scipen = 999)
   
   # Headers for Q and A files
-  cat("\\section*{Chapter 9 SULT Problems}  \n  $~$  \n", file = qfilein)
+  cat("\\section*{Chapter 10 SULT Problems}  \n  $~$  \n", file = qfilein)
   cat("\\subsection*{Notes}", file = qfilein, append = TRUE)
   cat("\\begin{itemize}", file = qfilein, append = TRUE)
   cat("\\item $i = 5\\%$", file = qfilein, append = TRUE)
@@ -244,7 +244,7 @@ Ch9QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
   cat("\\end{itemize} \n  $~$  \n", file = qfilein, append = TRUE)
   cat("\\subsection*{Problems} \n  $~$  \n", file = qfilein, append = TRUE)
   
-  cat("\\section*{Solutions to Chapter 9 SULT Problems}  \n  $~$  \n", file = afilein)
+  cat("\\section*{Solutions to Chapter 10 SULT Problems}  \n  $~$  \n", file = afilein)
   
   typecount <- 10
   if (!is.null(probspec))
@@ -269,7 +269,7 @@ Ch9QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
     probtype <- probtypes[i]
     if (probtype == 9) nn[i] <- 10
     allargs <- list(SULT = SULT, SULTjt = SULTjt, age = age[i], age2 = age2[i], nn = nn[i])
-    results <- do.call(problistch9[[probtype]], allargs)
+    results <- do.call(problistch10[[probtype]], allargs)
     cat(paste0(i,".  $", results$s.prob,"$  \n  $~$  \n"), file = qfilein, append = TRUE)
     cat(paste0(i,".  $\\displaystyle ", results$s.ans, "$  \n  $~$  \n  $~$  \n"), file = afilein, append = TRUE)
   }

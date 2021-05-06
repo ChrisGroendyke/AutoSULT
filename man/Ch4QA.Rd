@@ -11,7 +11,7 @@ Ch4QA(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE,
 }
 \arguments{
   \item{probspertype}{
-Number of problems of each type to generate.  Use this argument (instead of \code{probspec})to generate the same number of problems for each of the 16 types of Chapter 4 SULT problems.
+Number of problems of each type to generate.  Use this argument (instead of \code{probspec}) to generate the same number of problems for each of the 16 types of Chapter 4 SULT problems.
 }
   \item{probspec}{
 Vector of length 16 giving the number of each of the 16 types of Chapter 4 SULT problems to generate.  Use this argument (instead of \code{probspertype}) to generate different numbers of problems for the 16 types of Chapter 4 SULT problems.
@@ -51,7 +51,7 @@ Chris Groendyke \email{groendyke@rmu.edu}
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{Ch3QA}}, \code{\link{Ch5QA}}, and \code{\link{Ch9QA}} for analogous functions for generating problems and solutions for material in chapters 3, 5, and 9, respectively.
+\code{\link{Ch3QA}}, \code{\link{Ch5QA}}, and \code{\link{Ch10QA}} for analogous functions for generating problems and solutions for material in chapters 3, 5, and 10, respectively.
 }
 \examples{
 # Generate 3 problems of each type.
