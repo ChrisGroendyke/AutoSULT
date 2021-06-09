@@ -246,7 +246,7 @@ Ch10QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsum
   
   cat("\\section*{Solutions to Chapter 10 SULT Problems}  \n  $~$  \n", file = afilein)
   
-  typecount <- 10
+  typecount <- 14
   if (!is.null(probspec))
   {
     if (length(probspec) != typecount) stop(paste("Error in probspec parameter.  Must be a vector of length ", typecount))
@@ -267,7 +267,8 @@ Ch10QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsum
   for (i in 1:probs)
   {
     probtype <- probtypes[i]
-    if (probtype == 9) nn[i] <- 10
+    if (probtype > 6) age2[i] <- ifelse(runif(1)<0.5, age[i], age[i] + 10)
+    if (((probtype == 7) || (probtype == 8)) && (age[i] + nn[i] > 80)) nn[i] <- 79 - age[i]
     allargs <- list(SULT = SULT, SULTjt = SULTjt, age = age[i], age2 = age2[i], nn = nn[i])
     results <- do.call(problistch10[[probtype]], allargs)
     cat(paste0(i,".  $", results$s.prob,"$  \n  $~$  \n"), file = qfilein, append = TRUE)
@@ -280,7 +281,9 @@ Ch10QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsum
     
     probdescs <- c("${_np_{xy}}$", "${_nq_{xy}}$", "$\\px[n]{\\joint{xy}}$", "$\\qx[n]{\\joint{xy}}$",
                    "${_nE_{xy}}$", "${_nE_{\\joint{xy}}}$", "$\\Ax{\\itop{\\overanglebracket{xy}}:\\angl{n}}$",
-                   "$\\Ax{\\joint{xy}}$", "$\\ax**{x:y:\\angl{20}}$", "$\\ax**{x|y}$")
+                   "$\\Ax{\\itop{\\overline{xy}}:\\angl{n}}$","$\\Ax{\\joint{xy}}$", "$\\ax**{x:y:\\angl{20}}$", 
+                   "$\\ax**{x|y}$", "$\\ax**{\\overline{xy}}$", "$\\ax**{\\overline{x:y}:\\angl{10}}$", 
+                   "$\\ax**{\\overline{x:y}:\\angl{20}}$")
     
     probdat <- array(c(1:typecount, probdescs, probspec), dim = c(typecount, 3))
     colnames(probdat) <- c("Problem Type", "Problem Description", "Number Included")

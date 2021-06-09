@@ -44,10 +44,13 @@ s.nqxy2 <- function(age, age2, nn) return(if (nn == 1) paste0("\\qx{\\joint{",ro
 s.nExy <- function(age, age2, nn) return(paste0("{_{", round(nn, 1),"}E_{",round(age, 1),":", round(age2, 1),"}}"))
 s.nExy2 <- function(age, age2, nn) return(paste0("{_{", round(nn, 1),"}E_{\\joint{",round(age, 1),":", round(age2, 1),"}}}"))
 s.terminsj2 <- function(age, age2, nn) return(paste0("\\Ax{\\itop{\\overanglebracket{",age,":", age2, "}}:\\angl{",nn,"}}"))
+s.terminsl2 <- function(age, age2, nn) return(paste0("\\Ax{\\itop{\\overline{",age,":", age2, "}}:\\angl{",nn,"}}"))
 s.WLjt <- function(age, age2) return(paste0("\\Ax{", age, ":", age2, "}"))
 s.WLjt2 <- function(age, age2) return(paste0("\\Ax{\\joint{", age, ":", age2, "}}"))
 s.termannduejt <- function(age, age2, nn) return(paste0("\\ax**{", age, ":", age2, ":\\angl{", nn, "}}"))
+s.termannduelast <- function(age, age2, nn) return(paste0("\\ax**{\\overline{", age, ":", age2, "}:\\angl{", nn, "}}"))
 s.annduerev <- function(age, age2) return(paste0("\\ax**{", age, "|", age2, "}"))
 s.WLannduejt <- function(age, age2) return(paste0("\\ax**{", age, ":", age2, "}"))
+s.WLannduelast <- function(age, age2) return(paste0("\\ax**{\\overline{", age, ":", age2, "}}"))
 fbox <- function(ans, ansbox) return(ifelse(ansbox,paste0("\\fbox{", ans, "}"),ans))
   
