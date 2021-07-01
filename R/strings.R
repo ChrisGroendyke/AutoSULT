@@ -53,4 +53,10 @@ s.annduerev <- function(age, age2) return(paste0("\\ax**{", age, "|", age2, "}")
 s.WLannduejt <- function(age, age2) return(paste0("\\ax**{", age, ":", age2, "}"))
 s.WLannduelast <- function(age, age2) return(paste0("\\ax**{\\overline{", age, ":", age2, "}}"))
 fbox <- function(ans, ansbox) return(ifelse(ansbox,paste0("\\fbox{", ans, "}"),ans))
-  
+
+# Multi-state strings
+s.tpxij <- function(age, tt, i, j) return(paste0("{_{", round(tt, 0),"}p_{",round(age, 0),"}^{", i, j, "}}"))
+s.contWLannij <- function(age, i, j) return(paste0("\\ax*{", age, "}^{", i, j, "}"))
+s.contWLij <- function(age, i, j) return(paste0("\\Ax*{", age, "}^{", i, j,"}"))
+s.conttermannij <- function(age, i, j, nn) return(paste0("\\ax*{", age, ":\\angl{", nn, "}}^{", i, j, "}"))
+s.conttermij <- function(age, i, j, nn) return(paste0("\\Ax*{", age, ":\\angl{", nn, "}}^{", i, j, "}"))

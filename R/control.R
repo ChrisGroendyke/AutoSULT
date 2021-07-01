@@ -1,3 +1,6 @@
+############################################################
+# R Code File Containing User Functions (One per Chapter)  #
+############################################################
 
 Ch3QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech3", afile = "afilech3", keeptex = FALSE)
 {
@@ -220,6 +223,80 @@ Ch5QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsumm
     cat("\\subsection*{Notes}", file = qfilein, append = TRUE)
     cat("\\begin{itemize}", file = qfilein, append = TRUE)
     cat("\\item $n, x, \\text{ and } u$ are integers", file = qfilein, append = TRUE)
+    cat(paste0("\\item  Question order is ", ifelse(randomize, "", "not"), " randomized"), file = qfilein, append = TRUE)
+    cat("\\end{itemize} \n  $~$  \n", file = qfilein, append = TRUE)
+  }
+  
+  render(qfilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  render(afilein, pdf_document(keep_tex = keeptex, extra_dependencies = "actuarialsymbol"))
+  invisible(file.remove(qfilein)); invisible(file.remove(afilein)) #cleanup
+  
+}
+
+Ch8QA <- function(probspertype = 5, probspec = NULL, randomize = FALSE, probsummary = FALSE, qfile = "qfilech8", afile = "afilech8", keeptex = FALSE)
+{
+  qfilein <- paste0(qfile,".Rmd"); afilein <- paste0(afile,".Rmd")
+  options(scipen = 999)
+  
+  # Headers for Q and A files
+  cat("\\section*{Chapter 8 SSD Problems}  \n  $~$  \n", file = qfilein)
+  cat("\\subsection*{Notes}", file = qfilein, append = TRUE)
+  cat("\\begin{itemize}", file = qfilein, append = TRUE)
+  cat("\\item $i = 5\\%$", file = qfilein, append = TRUE)
+  cat("\\item Problems refer to the Standard Sickness-Death Model", file = qfilein, append = TRUE)
+  cat("\\end{itemize} \n  $~$  \n", file = qfilein, append = TRUE)
+  cat("\\subsection*{Problems} \n  $~$  \n", file = qfilein, append = TRUE)
+  
+  cat("\\section*{Solutions to Chapter 8 SSD Problems}  \n  $~$  \n", file = afilein)
+  
+  typecount <- 18
+  if (!is.null(probspec))
+  {
+    if (length(probspec) != typecount) stop(paste("Error in probspec parameter.  Must be a vector of length ", typecount))
+  } else
+  {
+    probspertype <- round(probspertype)
+    probspec <- rep(probspertype, times = typecount)
+  }
+  probs <- sum(probspec)
+  age <- as.integer(runif(probs, 50, 59))
+
+  probtypes <- rep(1:typecount, times = probspec)
+  if (randomize) probtypes <- sample(probtypes)
+  tenyrprobtypes <- c(7:10, 15, 16)
+    
+  for (i in 1:probs)
+  {
+    probtype <- probtypes[i]
+    if(probtype %in% tenyrprobtypes) if(runif(1)>0.5) age[i] <- age[i] + 10
+    allargs <- list(SSD = SSD, age = age[i])
+    results <- do.call(problistch8[[probtype]], allargs)
+    cat(paste0(i,".  $", results$s.prob,"$  \n  $~$  \n"), file = qfilein, append = TRUE)
+    cat(paste0(i,".  $\\displaystyle ", results$s.ans, "$  \n  $~$  \n  $~$  \n"), file = afilein, append = TRUE)
+  }
+  
+  if (probsummary) # Insert summary table if requested
+  {
+    cat("\\newpage \\subsection*{Summary} \n  $~$  \n", file = qfilein, append = TRUE)
+    probdescs <- c("${_{20}p_x^{00}}$", "${_{20}p_x^{01}}$", "${_{20}p_x^{02}}$", 
+                   "${_{20}p_x^{10}}$", "${_{20}p_x^{11}}$", "${_{20}p_x^{12}}$",
+                   "$\\ax*{x:\\angl{10}}^{00}$", "$\\ax*{x:\\angl{10}}^{01}$", "$\\ax*{x:\\angl{10}}^{10}$", "$\\ax*{x:\\angl{10}}^{11}$",
+                   "$\\ax*{x:\\angl{20}}^{00}$", "$\\ax*{x:\\angl{20}}^{01}$", "$\\ax*{x:\\angl{20}}^{10}$", "$\\ax*{x:\\angl{20}}^{11}$",
+                   "$\\Ax*{x:\\angl{10}}^{02}$", "$\\Ax*{x:\\angl{10}}^{12}$",
+                   "$\\Ax*{x:\\angl{20}}^{02}$", "$\\Ax*{x:\\angl{20}}^{12}$")
+    
+    probdat <- array(c(1:typecount, probdescs, probspec), dim = c(typecount, 3))
+    colnames(probdat) <- c("Problem Type", "Problem Description", "Number Included")
+    probdat <- rbind(probdat, c("Total", "", probs))
+    
+    summtab <- kable(probdat, format = "latex", align = "ccc", booktabs = FALSE, linesep = "", escape = FALSE) %>%
+      kable_styling(position = "left", latex_options = c("hold_position")) %>%
+      row_spec(typecount, hline_after = TRUE) 
+    cat(summtab, file = qfilein, append = TRUE)
+    
+    cat("\\subsection*{Notes}", file = qfilein, append = TRUE)
+    cat("\\begin{itemize}", file = qfilein, append = TRUE)
+    cat("\\item $x$ is an integer", file = qfilein, append = TRUE)
     cat(paste0("\\item  Question order is ", ifelse(randomize, "", "not"), " randomized"), file = qfilein, append = TRUE)
     cat("\\end{itemize} \n  $~$  \n", file = qfilein, append = TRUE)
   }

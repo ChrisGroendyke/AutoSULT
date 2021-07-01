@@ -1,1 +1,1 @@
-globalVariables(c("SULT", "SULTjt"))
+globalVariables(c("SULT", "SULTjt", "SSD"))
